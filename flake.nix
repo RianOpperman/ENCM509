@@ -25,6 +25,7 @@
               matplotlib
               numpy
               scipy
+              pandas
             ]))
           ];
         };
