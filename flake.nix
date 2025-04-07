@@ -25,6 +25,11 @@
               matplotlib
               numpy
               scipy
+              opencv4
+              scikit-learn
+              scikit-image
+              pandas
+              tensorflow
             ]))
           ];
         };
