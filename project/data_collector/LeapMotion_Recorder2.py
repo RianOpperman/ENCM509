@@ -74,9 +74,7 @@ class SampleListener(Leap.Listener):
         # print(self.df)
 
         # compression_opts = dict(method='zip',archive_name='out.csv')
-        temp = int(time.time())
-        name = "MA_gibb_%d.csv" % (temp)
-        self.df.to_csv(name, index=False)  # ,compression=compression_opts)
+        self.df.to_csv('data1.csv', index=False)  # ,compression=compression_opts)
 
         print("Data was saved")
         print("Exited")
