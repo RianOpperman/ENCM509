@@ -17,11 +17,9 @@ All files relevant to the project can be found in the `./project` directory, the
 
 - `model_builder` contains the notebooks to train, test the models. It also contains some extra visualization like the confusion matrix for example
 
-
 ## Requirements
 
 Based on the instruction found in Lab7:
-
 
 ### For running the model_builder and autheticator scripts run the following commands:
 ``` bash
@@ -51,5 +49,6 @@ conda install numpy pandas
 
 Now you should be able to run the `data_colletor` script as follows:
 ``` bash
-python LeapMotion Recorder2 .py
+# Inside the 'data_collector' folder
+python LeapMotion_Recorder2.py
 ```
