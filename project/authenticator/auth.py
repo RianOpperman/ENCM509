@@ -109,9 +109,9 @@ def process_data(datafiles, use_prerecorded=False, columns_to_expand=None, path=
         tmp.replace('', 0, inplace=True)
         # tmp = tmp.astype(float)
         
-        print(f'{relative_path}\nsize raw = {tmp.shape}')
+        # print(f'{relative_path}\nsize raw = {tmp.shape}')
         tmp = tmp.reindex(range(NUMBER_TIMESTEPS), fill_value=0) if tmp.shape[0] < NUMBER_TIMESTEPS else tmp.head(NUMBER_TIMESTEPS)
-        print(f'size normalized = {tmp.shape}')
+        # print(f'size normalized = {tmp.shape}')
         
         tmp_x = tmp.drop(columns=['GenuineRO', 'GenuineMA', 'imposter'], errors='ignore')
         tmp_x.drop(columns=[col for col in tmp_x.columns if col not in columns], inplace=True)
@@ -139,8 +139,8 @@ def watch(directory: str = "../data_collector", filename: str = "data1.csv", int
         
 
 def main():
-    model = load_model("../model/gesture_model.h5")
     tf.get_logger().setLevel('ERROR')
+    model = load_model("../model/gesture_model_bidirectional.h5")
     while True:
         data = watch()
         if data is None:
@@ -148,9 +148,9 @@ def main():
 
         print("Found a new file!")
         x = np.array(data, dtype=float).reshape((1, NUMBER_TIMESTEPS, NUMBER_FEATURES))
-        y = model.predict(x)
+        y = model.predict(x, verbose=0)
         y = np.argmax(y, axis=1)
-        print(f"y is {class_names[y[0]]}")
+        print(f"Newest recording is {class_names[y[0]]}")
 
 
 if __name__ == "__main__":
